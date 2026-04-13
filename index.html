@@ -8,55 +8,80 @@
 <style>
 body {
   margin: 0;
-  font-family: Arial, sans-serif;
-  background: #f5f5f5;
+  font-family: Arial;
+  background: #fff5f6;
 }
 
-/* topo */
 header {
   background: #e88b94;
   color: white;
   text-align: center;
-  padding: 18px;
+  padding: 15px;
   font-size: 20px;
   font-weight: bold;
 }
 
-/* container */
 .container {
-  max-width: 600px;
+  padding: 15px;
+  max-width: 650px;
   margin: auto;
-  padding: 15px;
+  padding-bottom: 140px;
 }
 
-/* cada cardápio */
-.cardapio {
+h2 {
+  color: #e88b94;
+  margin-top: 25px;
+}
+
+.item {
   background: white;
-  border-radius: 15px;
-  margin-bottom: 20px;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-  overflow: hidden;
-}
-
-.cardapio h2 {
-  margin: 0;
+  margin-bottom: 10px;
   padding: 12px;
-  background: #f2c1c6;
-  text-align: center;
-  font-size: 18px;
+  border-radius: 12px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
 }
 
-.cardapio img {
+.controls {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+button {
+  background: #e88b94;
+  border: none;
+  color: white;
+  padding: 6px 10px;
+  border-radius: 6px;
+  font-size: 16px;
+}
+
+.cart {
+  position: fixed;
+  bottom: 0;
   width: 100%;
-  display: block;
+  background: white;
+  border-top: 2px solid #ccc;
+  padding: 10px;
 }
 
-/* rodapé */
-footer {
-  text-align: center;
-  padding: 15px;
-  font-size: 14px;
-  color: #555;
+.cart input {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 5px;
+}
+
+.cart button {
+  width: 100%;
+  padding: 12px;
+  font-size: 16px;
+  background: #25d366;
+  color: white;
+  border: none;
+  border-radius: 6px;
 }
 </style>
 </head>
@@ -64,27 +89,131 @@ footer {
 <body>
 
 <header>
-  🍰 Dona Ana Confeitaria
+🍰 Dona Ana Confeitaria
 </header>
 
-<div class="container">
+<div class="container" id="menu"></div>
 
-  <div class="cardapio">
-    <h2>🍰 Cardápio de Doces</h2>
-    <img src="doces.jpg" alt="Cardápio de doces">
-  </div>
-
-  <div class="cardapio">
-    <h2>🍨 Cardápio de Sorvetes</h2>
-    <img src="sorvetes.jpg" alt="Cardápio de sorvetes">
-  </div>
-
+<div class="cart">
+  <input type="text" id="nome" placeholder="Seu nome">
+  <div id="total">Total: R$ 0,00</div>
+  <button onclick="finalizarPedido()">Finalizar Pedido</button>
 </div>
 
-<footer>
-  📱 (19) 97420-2350 <br>
-  📸 @donaanadocesebolos
-</footer>
+<script>
+
+const produtos = [
+
+/* 🍰 TORTAS */
+{nome:"Limão", preco:22, cat:"🍰 Tortas"},
+{nome:"Maracujá", preco:22, cat:"🍰 Tortas"},
+{nome:"Banoffe", preco:22, cat:"🍰 Tortas"},
+{nome:"Ninho com Uva Verde", preco:22, cat:"🍰 Tortas"},
+{nome:"Rafaello", preco:22, cat:"🍰 Tortas"},
+{nome:"Ferrero Rocher", preco:22, cat:"🍰 Tortas"},
+{nome:"Napolitano", preco:22, cat:"🍰 Tortas"},
+{nome:"Kinder Bueno", preco:22, cat:"🍰 Tortas"},
+{nome:"Oreo", preco:22, cat:"🍰 Tortas"},
+{nome:"Choco Oreo", preco:22, cat:"🍰 Tortas"},
+{nome:"Bombom com Morango", preco:22, cat:"🍰 Tortas"},
+{nome:"Pink Lemonade", preco:22, cat:"🍰 Tortas"},
+{nome:"Doce de leite crocante", preco:22, cat:"🍰 Tortas"},
+{nome:"Pistache com frutas vermelhas", preco:22, cat:"🍰 Tortas"},
+
+/* 🎂 BOLOS */
+{nome:"Caseirinho", preco:25, cat:"🎂 Bolos"},
+{nome:"Brownie sabores diversos", preco:12, cat:"🍫 Brownies"},
+
+/* 🍨 SORVETES TRADICIONAIS */
+{nome:"Coco", preco:12, cat:"🍨 Sorvetes Tradicionais"},
+{nome:"Abacaxi", preco:12, cat:"🍨 Sorvetes Tradicionais"},
+{nome:"Limão", preco:12, cat:"🍨 Sorvetes Tradicionais"},
+{nome:"Morango", preco:12, cat:"🍨 Sorvetes Tradicionais"},
+{nome:"Maracujá", preco:12, cat:"🍨 Sorvetes Tradicionais"},
+{nome:"Leite condensado", preco:12, cat:"🍨 Sorvetes Tradicionais"},
+{nome:"Doce de leite", preco:12, cat:"🍨 Sorvetes Tradicionais"},
+
+/* 🍦 SORVETES GOURMET */
+{nome:"Nutella", preco:15, cat:"🍦 Sorvetes Gourmet"},
+{nome:"Ninho com Nutella", preco:15, cat:"🍦 Sorvetes Gourmet"},
+{nome:"Ovomaltine", preco:15, cat:"🍦 Sorvetes Gourmet"},
+{nome:"Pistache", preco:15, cat:"🍦 Sorvetes Gourmet"},
+{nome:"Maracujá com chocolate", preco:15, cat:"🍦 Sorvetes Gourmet"},
+{nome:"Morango com chocolate", preco:15, cat:"🍦 Sorvetes Gourmet"},
+{nome:"Ninho com morango", preco:15, cat:"🍦 Sorvetes Gourmet"}
+
+];
+
+let carrinho = {};
+const menu = document.getElementById("menu");
+
+const categorias = [...new Set(produtos.map(p => p.cat))];
+
+categorias.forEach(cat => {
+  menu.innerHTML += `<h2>${cat}</h2>`;
+
+  produtos.filter(p => p.cat === cat).forEach(p => {
+
+    const id = p.nome.replace(/\s/g,'');
+
+    menu.innerHTML += `
+      <div class="item">
+        <span>${p.nome} - R$ ${p.preco}</span>
+        <div class="controls">
+          <button onclick="remover('${id}')">-</button>
+          <span id="${id}">0</span>
+          <button onclick="adicionar('${id}', ${p.preco}, '${p.nome}')">+</button>
+        </div>
+      </div>
+    `;
+  });
+});
+
+function adicionar(id, preco, nome) {
+  if (!carrinho[id]) carrinho[id] = {qtd:0, preco, nome};
+  carrinho[id].qtd++;
+  document.getElementById(id).innerText = carrinho[id].qtd;
+  atualizar();
+}
+
+function remover(id) {
+  if (!carrinho[id]) return;
+  carrinho[id].qtd--;
+  if (carrinho[id].qtd <= 0) delete carrinho[id];
+  document.getElementById(id).innerText = carrinho[id]?.qtd || 0;
+  atualizar();
+}
+
+function atualizar() {
+  let total = 0;
+  for (let i in carrinho) {
+    total += carrinho[i].qtd * carrinho[i].preco;
+  }
+  document.getElementById("total").innerText =
+    "Total: R$ " + total.toFixed(2).replace(".", ",");
+}
+
+function finalizarPedido() {
+  const nome = document.getElementById("nome").value || "Cliente";
+
+  if (Object.keys(carrinho).length === 0) {
+    alert("Carrinho vazio!");
+    return;
+  }
+
+  let msg = `Pedido - ${nome}:%0A`;
+  let total = 0;
+
+  for (let i in carrinho) {
+    msg += `${carrinho[i].qtd}x ${carrinho[i].nome}%0A`;
+    total += carrinho[i].qtd * carrinho[i].preco;
+  }
+
+  msg += `%0ATotal: R$ ${total.toFixed(2)}`;
+
+  window.open("https://wa.me/5519974202350?text=" + msg);
+}
+</script>
 
 </body>
 </html>
