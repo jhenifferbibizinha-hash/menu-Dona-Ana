@@ -57,6 +57,7 @@ button {
   padding: 6px 10px;
   border-radius: 6px;
   font-size: 16px;
+  cursor: pointer;
 }
 
 .cart {
@@ -105,42 +106,49 @@ button {
 const produtos = [
 
 /* 🍰 TORTAS */
-{nome:"Limão", preco:22, cat:"🍰 Tortas"},
-{nome:"Maracujá", preco:22, cat:"🍰 Tortas"},
-{nome:"Banoffe", preco:22, cat:"🍰 Tortas"},
-{nome:"Ninho com Uva Verde", preco:22, cat:"🍰 Tortas"},
-{nome:"Rafaello", preco:22, cat:"🍰 Tortas"},
-{nome:"Ferrero Rocher", preco:22, cat:"🍰 Tortas"},
-{nome:"Napolitano", preco:22, cat:"🍰 Tortas"},
-{nome:"Kinder Bueno", preco:22, cat:"🍰 Tortas"},
-{nome:"Oreo", preco:22, cat:"🍰 Tortas"},
-{nome:"Choco Oreo", preco:22, cat:"🍰 Tortas"},
-{nome:"Bombom com Morango", preco:22, cat:"🍰 Tortas"},
-{nome:"Pink Lemonade", preco:22, cat:"🍰 Tortas"},
-{nome:"Doce de leite crocante", preco:22, cat:"🍰 Tortas"},
-{nome:"Pistache com frutas vermelhas", preco:22, cat:"🍰 Tortas"},
+{nome:"Limão", preco:25, cat:"🍰 Tortas"},
+{nome:"Maracujá", preco:25, cat:"🍰 Tortas"},
+{nome:"Banoffe", preco:25, cat:"🍰 Tortas"},
+{nome:"Ninho com Uva Verde", preco:25, cat:"🍰 Tortas"},
+{nome:"Rafaello", preco:25, cat:"🍰 Tortas"},
+{nome:"Ferrero Rocher", preco:25, cat:"🍰 Tortas"},
+{nome:"Napolitano", preco:25, cat:"🍰 Tortas"},
+{nome:"Kinder Bueno", preco:25, cat:"🍰 Tortas"},
+{nome:"Oreo", preco:25, cat:"🍰 Tortas"},
+{nome:"Choco Oreo", preco:25, cat:"🍰 Tortas"},
+{nome:"Bombom com Morango", preco:25, cat:"🍰 Tortas"},
+{nome:"Pink Lemonade", preco:25, cat:"🍰 Tortas"},
+{nome:"Doce de leite crocante", preco:25, cat:"🍰 Tortas"},
+{nome:"Pistache com frutas vermelhas", preco:25, cat:"🍰 Tortas"},
 
-/* 🎂 BOLOS */
-{nome:"Caseirinho", preco:25, cat:"🎂 Bolos"},
-{nome:"Brownie sabores diversos", preco:12, cat:"🍫 Brownies"},
+/* 🎂 CASEIRINHOS */
+{nome:"Duo chocolate", preco:28, cat:"🎂 Bolos"},
+{nome:"Chocolate", preco:28, cat:"🎂 Bolos"},
+{nome:"Cenoura com chocolate", preco:28, cat:"🎂 Bolos"},
+
+/* 🍫 BROWNIES */
+{nome:"Doce de leite", preco:15, cat:"🍫 Brownies"},
+{nome:"Brigadeiro", preco:15, cat:"🍫 Brownies"},
+{nome:"Duo chocolate", preco:15, cat:"🍫 Brownies"},
+{nome:"Tradicional", preco:13, cat:"🍫 Brownies"},
 
 /* 🍨 SORVETES TRADICIONAIS */
-{nome:"Coco", preco:12, cat:"🍨 Sorvetes Tradicionais"},
-{nome:"Abacaxi", preco:12, cat:"🍨 Sorvetes Tradicionais"},
-{nome:"Limão", preco:12, cat:"🍨 Sorvetes Tradicionais"},
-{nome:"Morango", preco:12, cat:"🍨 Sorvetes Tradicionais"},
-{nome:"Maracujá", preco:12, cat:"🍨 Sorvetes Tradicionais"},
-{nome:"Leite condensado", preco:12, cat:"🍨 Sorvetes Tradicionais"},
-{nome:"Doce de leite", preco:12, cat:"🍨 Sorvetes Tradicionais"},
+{nome:"Coco", preco:15, cat:"🍨 Sorvetes Tradicionais"},
+{nome:"Abacaxi", preco:15, cat:"🍨 Sorvetes Tradicionais"},
+{nome:"Limão", preco:15, cat:"🍨 Sorvetes Tradicionais"},
+{nome:"Morango", preco:15, cat:"🍨 Sorvetes Tradicionais"},
+{nome:"Maracujá", preco:15, cat:"🍨 Sorvetes Tradicionais"},
+{nome:"Leite condensado", preco:15, cat:"🍨 Sorvetes Tradicionais"},
+{nome:"Doce de leite", preco:15, cat:"🍨 Sorvetes Tradicionais"},
 
 /* 🍦 SORVETES GOURMET */
-{nome:"Nutella", preco:15, cat:"🍦 Sorvetes Gourmet"},
-{nome:"Ninho com Nutella", preco:15, cat:"🍦 Sorvetes Gourmet"},
-{nome:"Ovomaltine", preco:15, cat:"🍦 Sorvetes Gourmet"},
-{nome:"Pistache", preco:15, cat:"🍦 Sorvetes Gourmet"},
-{nome:"Maracujá com chocolate", preco:15, cat:"🍦 Sorvetes Gourmet"},
-{nome:"Morango com chocolate", preco:15, cat:"🍦 Sorvetes Gourmet"},
-{nome:"Ninho com morango", preco:15, cat:"🍦 Sorvetes Gourmet"}
+{nome:"Nutella", preco:18, cat:"🍦 Sorvetes Gourmet"},
+{nome:"Ninho com Nutella", preco:18, cat:"🍦 Sorvetes Gourmet"},
+{nome:"Ovomaltine", preco:18, cat:"🍦 Sorvetes Gourmet"},
+{nome:"Pistache", preco:18, cat:"🍦 Sorvetes Gourmet"},
+{nome:"Maracujá com chocolate", preco:18, cat:"🍦 Sorvetes Gourmet"},
+{nome:"Morango com chocolate", preco:18, cat:"🍦 Sorvetes Gourmet"},
+{nome:"Ninho com morango", preco:18, cat:"🍦 Sorvetes Gourmet"}
 
 ];
 
@@ -149,14 +157,15 @@ const menu = document.getElementById("menu");
 
 const categorias = [...new Set(produtos.map(p => p.cat))];
 
+let html = "";
+
 categorias.forEach(cat => {
-  menu.innerHTML += `<h2>${cat}</h2>`;
+  html += `<h2>${cat}</h2>`;
 
-  produtos.filter(p => p.cat === cat).forEach(p => {
+  produtos.filter(p => p.cat === cat).forEach((p, index) => {
+    const id = cat + "-" + index;
 
-    const id = p.nome.replace(/\s/g,'');
-
-    menu.innerHTML += `
+    html += `
       <div class="item">
         <span>${p.nome} - R$ ${p.preco}</span>
         <div class="controls">
@@ -168,6 +177,8 @@ categorias.forEach(cat => {
     `;
   });
 });
+
+menu.innerHTML = html;
 
 function adicionar(id, preco, nome) {
   if (!carrinho[id]) carrinho[id] = {qtd:0, preco, nome};
@@ -189,29 +200,30 @@ function atualizar() {
   for (let i in carrinho) {
     total += carrinho[i].qtd * carrinho[i].preco;
   }
+
   document.getElementById("total").innerText =
     "Total: R$ " + total.toFixed(2).replace(".", ",");
 }
 
 function finalizarPedido() {
-  const nome = document.getElementById("nome").value || "Cliente";
+  const nome = document.getElementById("nome").value.trim() || "Cliente";
 
   if (Object.keys(carrinho).length === 0) {
     alert("Carrinho vazio!");
     return;
   }
 
-  let msg = `Pedido - ${nome}:%0A`;
+  let msg = `Pedido - ${nome}:\n`;
   let total = 0;
 
   for (let i in carrinho) {
-    msg += `${carrinho[i].qtd}x ${carrinho[i].nome}%0A`;
+    msg += `${carrinho[i].qtd}x ${carrinho[i].nome}\n`;
     total += carrinho[i].qtd * carrinho[i].preco;
   }
 
-  msg += `%0ATotal: R$ ${total.toFixed(2)}`;
+  msg += `\nTotal: R$ ${total.toFixed(2)}`;
 
-  window.open("https://wa.me/5519974202350?text=" + msg);
+  window.open("https://wa.me/5519974202350?text=" + encodeURIComponent(msg));
 }
 </script>
 
