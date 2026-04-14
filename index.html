@@ -247,24 +247,31 @@ function atualizar() {
 
 function finalizarPedido() {
   const nome = document.getElementById("nome").value.trim();
+
   if (!nome) return alert("Por favor, digite seu nome.");
   if (Object.keys(carrinho).length === 0) return alert("Seu carrinho está vazio!");
-  
-  let msg = `*Novo Pedido - Dona Ana Confeitaria*\n`;
-  msg += `👤 *Cliente:* ${nome}\n`;
-  msg += `------------------------------\n`;
+
+  let msg = `🍰 Dona Ana Confeitaria\n`;
+  msg += `👤 Cliente: ${nome}\n`;
+  msg += `------------------------\n`;
+
   let total = 0;
+
   for (let i in carrinho) {
     msg += `✅ ${carrinho[i].qtd}x ${carrinho[i].nome}\n`;
     total += carrinho[i].qtd * carrinho[i].preco;
   }
-  msg += `------------------------------\n`;
-  msg += `*Total: R$ ${total.toFixed(2).replace(".", ",")}*`;
-  
-  window.open("https://wa.me" + encodeURIComponent(msg));
+
+  msg += `------------------------\n`;
+  msg += `💰 Total: R$ ${total.toFixed(2).replace(".", ",")}`;
+
+  const numero = "5519974202350";
+
+  const url = `https://wa.me/${numero}?text=${encodeURIComponent(msg)}`;
+
+  window.open(url, "_blank");
 }
 </script>
 
 </body>
 </html>
-
